@@ -1,6 +1,6 @@
 ## Task tracker 
 
-### 🛠 Build in:
+### 🛠 Build on:
 - **Vanilla JS** 
 - **Html** 
 - **Css** 
