@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Task tracker</title>
+</head>
+<body class="page-body">
+
+    <div class="todo-app">
+        <h1 class="todo-app__header">To do list</h1>
+        <p class="todo-app__sort-wrapper">
+            <button class="todo-app__sort-button" aria-label="Sort asc/desc">
+                <svg width="25" height="15" viewBox="0 0 25 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="2.5" width="2.5" height="12.5" fill="#C4C4C4"/>
+                    <rect x="10" y="3.75" width="2.5" height="7.5" transform="rotate(-90 10 3.75)" fill="#C4C4C4"/>
+                    <rect x="10" y="8.75" width="2.5" height="10" transform="rotate(-90 10 8.75)" fill="#C4C4C4"/>
+                    <rect x="10" y="13.75" width="2.5" height="15" transform="rotate(-90 10 13.75)" fill="#C4C4C4"/>
+                    <path d="M3.75 15L0.502405 10.3125L6.9976 10.3125L3.75 15Z" fill="#C4C4C4"/>
+                </svg>
+            </button></p>
+        <ul class="todo-app__list">
+            <li class="todo-app__item">
+                <button class="todo-app__item-button-drag" aria-label="Drag me">
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="2" cy="2" r="2" fill="#C4C4C4"/>
+                        <circle cx="2" cy="10" r="2" fill="#C4C4C4"/>
+                        <circle cx="10" cy="2" r="2" fill="#C4C4C4"/>
+                        <circle cx="10" cy="10" r="2" fill="#C4C4C4"/>
+                    </svg>                        
+                </button>
+                <input class="todo-app__item-input" type="text" value="Почистить зубы">
+                <button class="todo-app__item-button-delete" aria-label="Delete me"></button>
+            </li>
+
+            <li class="todo-app__item">
+                <button class="todo-app__item-button-drag" aria-label="Drag me">
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="2" cy="2" r="2" fill="#C4C4C4"/>
+                        <circle cx="2" cy="10" r="2" fill="#C4C4C4"/>
+                        <circle cx="10" cy="2" r="2" fill="#C4C4C4"/>
+                        <circle cx="10" cy="10" r="2" fill="#C4C4C4"/>
+                    </svg>  
+                </button>
+                <input class="todo-app__item-input" type="text" value="Купить зубную пасту">
+                <button class="todo-app__item-button-delete" aria-label="Delete me"></button>
+            </li>
+
+            <li class="todo-app__item">
+                <button class="todo-app__item-button-drag" aria-label="Drag me">
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="2" cy="2" r="2" fill="#C4C4C4"/>
+                        <circle cx="2" cy="10" r="2" fill="#C4C4C4"/>
+                        <circle cx="10" cy="2" r="2" fill="#C4C4C4"/>
+                        <circle cx="10" cy="10" r="2" fill="#C4C4C4"/>
+                    </svg>  
+                </button>
+                <input class="todo-app__item-input" type="text" value="Умыться">
+                <button class="todo-app__item-button-delete" aria-label="Delete me"></button>
+            </li>
+
+            <li class="todo-app__item">
+                <button class="todo-app__item-button-drag" aria-label="Drag me">
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="2" cy="2" r="2" fill="#C4C4C4"/>
+                        <circle cx="2" cy="10" r="2" fill="#C4C4C4"/>
+                        <circle cx="10" cy="2" r="2" fill="#C4C4C4"/>
+                        <circle cx="10" cy="10" r="2" fill="#C4C4C4"/>
+                    </svg>                        
+                </button>
+                <input class="todo-app__item-input" type="text" value="Почистить зубы">
+                <button class="todo-app__item-button-delete" aria-label="Delete me"></button>
+            </li>
+
+            <li class="todo-app__item">
+                <button class="todo-app__item-button-drag" aria-label="Drag me">
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="2" cy="2" r="2" fill="#C4C4C4"/>
+                        <circle cx="2" cy="10" r="2" fill="#C4C4C4"/>
+                        <circle cx="10" cy="2" r="2" fill="#C4C4C4"/>
+                        <circle cx="10" cy="10" r="2" fill="#C4C4C4"/>
+                    </svg>  
+                </button>
+                <input class="todo-app__item-input" type="text" value="Купить зубную пасту">
+                <button class="todo-app__item-button-delete" aria-label="Delete me"></button>
+            </li>
+        </ul>
+        <button class="todo-app__button-add">Добавить</button>
+    </div>
+    
+    <script src="./js/app.js"></script>
+</body>
+</html>

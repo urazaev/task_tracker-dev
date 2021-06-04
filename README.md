@@ -1,1 +1,6 @@
-# task_tracker-dev
+## Task tracker 
+
+### 🛠 Build in:
+- **Vanilla JS** 
+- **Html** 
+- **Css** 
