@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;600&display=swap');
+
 *, *::before, *::after {
     box-sizing: border-box;
 }
@@ -16,14 +18,10 @@
     position: relative;
     grid-column: 2/3;
     grid-row: 2/3;
-    /* display: grid;
-    grid-column: 28px 1fr 28px; */
     padding: 46px 24px 19px 24px;
     border: 1px solid #C4C4C4;
     border-radius: 10px;
     overflow: hidden;
-    /* min-height: 397px; TODO: delete me */
-
 }
 
 .todo-app__sort-wrapper {
@@ -63,32 +61,44 @@
 }
 
 .todo-app__list {
+    position: relative;
     border: 1px solid #C4C4C4;
-    padding: 15px 7px;
+    padding: 0;
     list-style: none;
     border-radius: 10px;
-    margin: 0;
-    margin-bottom: 17px;
+    overflow: hidden;
+    margin: 0px 0 22px 0;
 }
+
 .todo-app__item {
     display: flex;
-    grid-template-columns: 40px 1fr 30px;
-    min-height: 38px;
+    min-height: 39px;
     flex-wrap: wrap;
     align-content: center;
     justify-content: space-between;
     align-items: center;
+    min-width: 284px;
+}
+
+.todo-app__item:hover {
+    background-color: #FFDC40;
 }
 
 .todo-app__item-button-drag {
     background-color: transparent;
     border: none;
+    margin-left: 10px;
+}
+
+.todo-app__item-button-drag svg {
+    fill: #C4C4C4;
 }
 
 .todo-app__item-input {
     font-size: 14px;
     border: none;
-    margin-right: 20px;
+    margin-right: 37px;
+    background: transparent;
 }
 
 .todo-app__item-button-delete {
@@ -97,7 +107,15 @@
     position: relative;
     width: 21px;
     height: 21px;
+    margin-right: 6px;
 }
+
+.todo-app__item-button-delete:hover {
+    border-color: #833AE0;
+    background-color: #833AE0;
+
+}
+
 .todo-app__item-button-delete::before {
     content: "";
     position: absolute;
@@ -108,6 +126,7 @@
     top: 2px;
     left: 9px;
 }
+
 .todo-app__item-button-delete::after {
     content: "";
     position: absolute;
@@ -118,6 +137,17 @@
     top: 2px;
     left: 9px;
 }
+
+.todo-app__item-button-delete:hover::before {
+    background-color: #FFFFFF;
+
+}
+
+.todo-app__item-button-delete:hover::after {
+    background-color: #FFFFFF;
+
+}
+
 .todo-app__button-add {
     font-size: 14px;
     line-height: 16px;
@@ -129,12 +159,13 @@
     min-height: 42px;
     margin: 0 auto;
     padding-left: 27px;
-    background: #833AE0;
+    background-color: #833AE0;
     border-radius: 71px;
     border: none;
     color: #FFFFFF;
-    margin-bottom: 10px;
+    margin-bottom: 0px;
 }
+
 .todo-app__button-add::before {
     content: "+";
     position: absolute;
@@ -150,4 +181,32 @@
     z-index: 4;
 }
 
-/* TODO: styleguide */
+.todo-app__button-add:hover {
+    background-color: #9953F1;
+}
+
+.todo-app__button-add:hover::before {
+    background-color: #AA68FE;
+}
+
+.todo-app__sort-button svg {
+    fill: #C4C4C4;
+}
+
+.todo-app__sort-button:hover svg {
+    fill: #000000;
+}
+
+.todo-app__sort-button--down .sort-arrow__up {
+    display: none;
+}
+
+.todo-app__sort-button--up .sort-arrow__down {
+    display: none;
+}
+
+.placeholder {
+    background-color: #edf2f7;
+    border: 2px dashed #cbd5e0;
+    margin-bottom: 1rem;
+}
