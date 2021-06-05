@@ -172,5 +172,5 @@ const mouseUpHandler = function () {
     document.removeEventListener("mouseup", mouseUpHandler);
 };
 
-// add EL for all child items in list
+// add EL for DND on parrent element for li
 list.addEventListener("mousedown", mouseDownHandler);
