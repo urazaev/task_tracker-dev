@@ -6,7 +6,6 @@ const inputList = document.querySelector('.todo-app__list');
 
 const inputListItems = document.getElementsByClassName('todo-app__item');
 
-// lets sort data in inputs
 sortTasksButton.addEventListener('click', () => {
     // just for design purposes
     sortTasksButton.classList.toggle('todo-app__sort-button--down');
@@ -33,14 +32,25 @@ sortTasksButton.addEventListener('click', () => {
         )
 })
 
-// add task feature
-addTaskButton.addEventListener('click', () => {
+const addNewTaskInMarkup = () => {
     const newInput = mainInput.cloneNode(true);
-    newInput.querySelector('input').value = '';
+    const newInputItem = newInput.querySelector('input');
+    newInputItem.value = '';
     inputList.appendChild(newInput);
+    newInputItem.focus();
+}
+
+addTaskButton.addEventListener('click', () => {
+    addNewTaskInMarkup();
 })
 
-// just delete LI on button (bubbling)
+document.addEventListener('keydown', (e) => {
+    console.log(document.activeElement);
+    if (e.code === 'Enter' && document.activeElement.classList.contains('todo-app__item-input')  && document.activeElement.value) {
+        addNewTaskInMarkup();
+    }
+})
+
 inputList.addEventListener('click', (e) => {
     if (e.target.classList.contains('todo-app__item-button-delete')) {
         if (inputListItems.length > 1) {
@@ -51,7 +61,6 @@ inputList.addEventListener('click', (e) => {
     }
 });
 
-// DND
 const list = inputList;
 
 let draggingEle;
@@ -82,7 +91,6 @@ const isAbove = function (nodeA, nodeB) {
 
     return rectA.top + rectA.height / 2 < rectB.top + rectB.height / 2;
 };
-
 
 const mouseDownHandler = function (e) {
     if (e.target.classList.contains('todo-app__item')
