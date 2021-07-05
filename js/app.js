@@ -57,18 +57,15 @@ const addNewTaskInMarkup = (arr) => {
 
 const updateStorage = (data) => {
     if (data) {
-        console.log('has data');
         localStorage.setItem('urazaev_github_io_task_tracker_content', JSON.stringify(data));
         return
     }
 
-    console.log('hasnt data');
-    const inputText = [...inputListItems];
+ъ    const inputText = [...inputListItems];
     let arrOfValues = inputText.map((item) => item.querySelector('input').value)
     arrOfValues.splice(-1, 1);
 
     localStorage.setItem('urazaev_github_io_task_tracker_content', JSON.stringify(arrOfValues));
-    console.log(localStorage.getItem('urazaev_github_io_task_tracker_content'));
 
 }
 
@@ -223,7 +220,6 @@ list.addEventListener("mousedown", mouseDownHandler);
 
 var storage = localStorage.getItem('urazaev_github_io_task_tracker_content');
 if (storage) {
-    console.log(JSON.parse(storage));
     addNewTaskInMarkup(JSON.parse(storage));
 }
 // var hasShown = localStorage.getItem('urazaev_github_io_task_tracker_shown');
