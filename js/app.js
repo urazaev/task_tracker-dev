@@ -46,7 +46,9 @@ const addNewTaskInMarkup = (arr) => {
         arr.reverse().map((el) => {
             const newInput = mainInput.cloneNode(true);
             const newInputItem = newInput.querySelector('input');
-            newInputItem.value = el;
+            const newInputItemDoneButton = newInput.querySelector('.todo-app__item-button-done');
+            el.completed ? newInputItemDoneButton.classList.add('todo-app__item-button-done--checked') : '';
+            newInputItem.value = el.name;
             inputList.prepend(newInput);
         })
 
@@ -61,8 +63,15 @@ const updateStorage = (data) => {
         return
     }
 
-ъ    const inputText = [...inputListItems];
-    let arrOfValues = inputText.map((item) => item.querySelector('input').value)
+    const inputText = [...inputListItems];
+    let arrOfValues = inputText.map((item) => {
+        return ({
+            id: Date.now(),
+            name: item.querySelector('input').value,
+            completed: item.querySelector('.todo-app__item-button-done').classList.contains('todo-app__item-button-done--checked'),
+        })
+    })
+    console.log(arrOfValues);
     arrOfValues.splice(-1, 1);
 
     localStorage.setItem('urazaev_github_io_task_tracker_content', JSON.stringify(arrOfValues));
