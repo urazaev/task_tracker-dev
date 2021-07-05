@@ -16,7 +16,7 @@ sortTasksButton.addEventListener('click', () => {
 
     // array for new data
     newArr = [];
-
+    inputText.splice(-1, 1);
     inputText.forEach((item) => {
         newArr.push(item.querySelector('input').value);
     })
@@ -30,23 +30,56 @@ sortTasksButton.addEventListener('click', () => {
                 item.querySelector('input').value = newArr.shift();
             }
         )
+    updateStorage();
 })
 
-const addNewTaskInMarkup = () => {
-    const newInput = mainInput.cloneNode(true);
-    const newInputItem = newInput.querySelector('input');
-    newInputItem.value = '';
-    inputList.appendChild(newInput);
-    newInputItem.focus();
+const addNewTaskInMarkup = (arr) => {
+    if (!arr) {
+        const newInput = mainInput.cloneNode(true);
+        const newInputItem = newInput.querySelector('input');
+        newInputItem.value = '';
+        inputList.appendChild(newInput);
+        newInputItem.focus();
+        updateStorage();
+    } else if (arr) {
+        console.log(arr);
+        arr.reverse().map((el) => {
+            const newInput = mainInput.cloneNode(true);
+            const newInputItem = newInput.querySelector('input');
+            newInputItem.value = el;
+            inputList.prepend(newInput);
+        })
+
+        updateStorage();
+    }
+
+}
+
+const updateStorage = (data) => {
+    if (data) {
+        console.log('has data');
+        localStorage.setItem('urazaev_github_io_task_tracker_content', JSON.stringify(data));
+        return
+    }
+
+    console.log('hasnt data');
+    const inputText = [...inputListItems];
+    let arrOfValues = inputText.map((item) => item.querySelector('input').value)
+    arrOfValues.splice(-1, 1);
+
+    localStorage.setItem('urazaev_github_io_task_tracker_content', JSON.stringify(arrOfValues));
+    console.log(localStorage.getItem('urazaev_github_io_task_tracker_content'));
+
 }
 
 addTaskButton.addEventListener('click', () => {
-    addNewTaskInMarkup();
+    if (document.querySelector('.todo-app__item:last-child').querySelector('input').value) {
+        addNewTaskInMarkup();
+    }
 })
 
 document.addEventListener('keydown', (e) => {
-    console.log(document.activeElement);
-    if (e.code === 'Enter' && document.activeElement.classList.contains('todo-app__item-input')  && document.activeElement.value) {
+    if (e.code === 'Enter' && document.activeElement.classList.contains('todo-app__item-input') && document.activeElement.value) {
         addNewTaskInMarkup();
     }
 })
@@ -54,10 +87,15 @@ document.addEventListener('keydown', (e) => {
 inputList.addEventListener('click', (e) => {
     if (e.target.classList.contains('todo-app__item-button-delete')) {
         if (inputListItems.length > 1) {
-            e.target.closest('li').remove()
+            e.target.closest('li').remove();
+            updateStorage();
         } else {
             inputListItems[0].querySelector('input').value = '';
+            updateStorage();
         }
+    } else if (e.target.classList.contains('todo-app__item-button-done') || e.target.closest('.todo-app__item-button-done')) {
+        e.target.closest('.todo-app__item-button-done').classList.toggle('todo-app__item-button-done--checked');
+        updateStorage();
     }
 });
 
@@ -182,3 +220,12 @@ const mouseUpHandler = function () {
 
 // add EL for DND on parrent element for li
 list.addEventListener("mousedown", mouseDownHandler);
+
+var storage = localStorage.getItem('urazaev_github_io_task_tracker_content');
+if (storage) {
+    console.log(JSON.parse(storage));
+    addNewTaskInMarkup(JSON.parse(storage));
+}
+// var hasShown = localStorage.getItem('urazaev_github_io_task_tracker_shown');
+
+

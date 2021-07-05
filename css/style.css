@@ -14,6 +14,12 @@
     padding: 0;
 }
 
+@media (min-width: 768px) {
+    .page-body {
+        grid-template-columns: 1fr 88vw 1fr;
+    }
+}
+
 .todo-app {
     position: relative;
     grid-column: 2/3;
@@ -22,6 +28,8 @@
     border: 1px solid #C4C4C4;
     border-radius: 10px;
     overflow: hidden;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
 }
 
 .todo-app__sort-wrapper {
@@ -94,11 +102,39 @@
     fill: #C4C4C4;
 }
 
+.todo-app__item-button-done .todo-app__item-button-done-svg {
+    display: none;
+}
+
+.todo-app__item-button-done .todo-app__item-button-undone-svg {
+    display: block;
+}
+
+.todo-app__item-button-done--checked .todo-app__item-button-undone-svg {
+    display: none;
+}
+
+.todo-app__item-button-done--checked .todo-app__item-button-done-svg {
+    display: block;
+}
+
+.todo-app__item-button-done--checked + .todo-app__item-input {
+    text-decoration: line-through;
+}
+
+.todo-app__item-button-done {
+    background-color: transparent;
+    border: none;
+    margin-left: 10px;
+    width: 39px;
+}
+
 .todo-app__item-input {
     font-size: 14px;
     border: none;
-    margin-right: 37px;
     background: transparent;
+    margin-right: 16px;
+    flex-grow: 1;
 }
 
 .todo-app__item-button-delete {
@@ -209,4 +245,21 @@
     background-color: #edf2f7;
     border: 2px dashed #cbd5e0;
     margin-bottom: 1rem;
+}
+
+.todo-app__item:last-child .todo-app__item-button-drag, .todo-app__item:last-child .todo-app__item-button-done, .todo-app__item:last-child .todo-app__item-button-delete {
+    display: none;
+}
+
+.todo-app__item:nth-last-child(2) {
+    border-bottom: 1px solid #C4C4C4;
+}
+
+.todo-app__item:last-child {
+    background-color: #edf2f7;
+
+}
+
+.todo-app__item:last-child .todo-app__item-input {
+    margin-left: 14px;
 }
