@@ -83,7 +83,7 @@ addTaskButton.addEventListener('click', () => {
 })
 
 document.addEventListener('keydown', (e) => {
-    if (e.code === 'Enter' && document.activeElement.classList.contains('todo-app__item-input') && document.activeElement.value) {
+    if (e.code === 'Enter' && document.activeElement.classList.contains('todo-app__item-input') && document.querySelector('.todo-app__item:last-child').querySelector('input').value) {
         addNewTaskInMarkup();
     }
 })
@@ -135,7 +135,7 @@ const isAbove = function (nodeA, nodeB) {
 };
 
 const mouseDownHandler = function (e) {
-    if (e.target.classList.contains('todo-app__item')
+    if (e.target.classList.contains('todo-app__item:not(:last-child)')
         || e.target.closest('.todo-app__item-button-drag')) {
 
         draggingEle = e.target.closest('li');
@@ -194,7 +194,7 @@ const mouseMoveHandler = function (e) {
 
     // The dragging element is below the next element
     // User moves the dragging element to the bottom
-    if (nextEle && isAbove(nextEle, draggingEle)) {
+    if (nextEle && (nextEle !== document.querySelector('.todo-app__item:last-child')) && isAbove(nextEle, draggingEle)) {
         // The current order    -> The new order
         // draggingEle          -> nextEle
         // placeholder          -> placeholder
