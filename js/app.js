@@ -1,8 +1,9 @@
 const sortTasksButton = document.querySelector('.todo-app__sort-button');
 const addTaskButton = document.querySelector('.todo-app__button-add');
 
-const mainInput = document.querySelector('.todo-app__item:last-child');
 const inputList = document.querySelector('.todo-app__list');
+
+const mainInput = document.querySelector('.todo-app__item:last-child');
 
 const inputListItems = document.getElementsByClassName('todo-app__item');
 
@@ -35,7 +36,7 @@ sortTasksButton.addEventListener('click', () => {
 
 const addNewTaskInMarkup = (arr) => {
     if (!arr) {
-        const newInput = mainInput.cloneNode(true);
+        const newInput = inputList.lastElementChild.cloneNode(true);
         const newInputItem = newInput.querySelector('input');
         newInputItem.value = '';
         inputList.appendChild(newInput);
@@ -43,7 +44,7 @@ const addNewTaskInMarkup = (arr) => {
         updateStorage();
     } else if (arr) {
         arr.reverse().map((el) => {
-            const newInput = mainInput.cloneNode(true);
+            const newInput = inputList.lastElementChild.cloneNode(true);
             const newInputItem = newInput.querySelector('input');
             const newInputItemDoneButton = newInput.querySelector('.todo-app__item-button-done');
             el.completed ? newInputItemDoneButton.classList.add('todo-app__item-button-done--checked') : '';
@@ -77,13 +78,13 @@ const updateStorage = (data) => {
 }
 
 addTaskButton.addEventListener('click', () => {
-    if (document.querySelector('.todo-app__item:last-child').querySelector('input').value) {
+    if (inputList.lastElementChild.value) {
         addNewTaskInMarkup();
     }
 })
 
 document.addEventListener('keydown', (e) => {
-    if (e.code === 'Enter' && document.activeElement.classList.contains('todo-app__item-input') && document.querySelector('.todo-app__item:last-child').querySelector('input').value) {
+    if (e.code === 'Enter' && document.activeElement.classList.contains('todo-app__item-input') && inputList.lastElementChild.querySelector('input').value) {
         addNewTaskInMarkup();
     }
 })
@@ -194,7 +195,7 @@ const mouseMoveHandler = function (e) {
 
     // The dragging element is below the next element
     // User moves the dragging element to the bottom
-    if (nextEle && (nextEle !== document.querySelector('.todo-app__item:last-child')) && isAbove(nextEle, draggingEle)) {
+    if (nextEle && (nextEle !== inputList.lastElementChild) && isAbove(nextEle, draggingEle)) {
         // The current order    -> The new order
         // draggingEle          -> nextEle
         // placeholder          -> placeholder
